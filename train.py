@@ -25,7 +25,7 @@ device = torch.device(config.device if torch.cuda.is_available() else "cpu")
 # Dataset + Dataloader
 # --------------------------------------------------
 train_dataset = UCSDPed2(
-    root_dir=r"C:\Users\uceti\Desktop\DATA_FINAL\UCSD",   # 🔴 CHANGE THIS
+    root_dir="UCSD",
     sequence_length=config.sequence_length,
     split="train"
 )
@@ -70,5 +70,6 @@ for epoch in range(config.epochs):
         optimizer.step()
 
         total_loss += loss.item()
+
 
     print(f"Epoch [{epoch+1}/{config.epochs}]  Loss: {total_loss/len(dataloader):.6f}")
