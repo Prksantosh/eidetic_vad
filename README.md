@@ -9,4 +9,6 @@ Residual Hybrid Convolution Network with 3D Eidetic Memory Unit for Prediction-B
 - Prediction-based anomaly detection
 
 ## Usage
-python train.py
+Videopredictor/train_Avenue.ipynb
+Videopredictor/train_Shanghai.ipynb
+Videopredictor/train_UBnormal.ipynb
