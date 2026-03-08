@@ -1,6 +1,4 @@
-# eidetic_vad
-# RHCNet-EMU
-
+## eidetic_vad
 Residual Hybrid Convolution Network with 3D Eidetic Memory Unit for Prediction-Based Video Anomaly Detection.
 
 ## Features
