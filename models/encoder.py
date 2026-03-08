@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Mar  8 14:09:40 2026
-
-@author: Santosh Prakash
-"""
-
 import torch.nn as nn
 from models.rhc_layer import RHCLayer
 
@@ -28,4 +21,5 @@ class Encoder(nn.Module):
         x = self.pool2(x)
 
         x = self.layer3(x)
+
         return x
