@@ -1,9 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Mar  8 14:04:19 2026
 
-@author: Santosh Prakash
-"""
 
 class Config:
     # Data
@@ -12,7 +7,7 @@ class Config:
     sequence_length = 4
 
     # Model
-    base_channels = 64
+    base_channels = 32
     memory_channels = 256
     emu_layers = 2
 
@@ -24,4 +19,5 @@ class Config:
 
     # Loss weights
     lambda_mse = 1.0
+
     lambda_ssim = 0.5
