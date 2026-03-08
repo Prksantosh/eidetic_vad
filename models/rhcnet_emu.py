@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Mar  8 14:10:42 2026
-
-@author: Santosh Prakash
-"""
-
 import torch
 import torch.nn as nn
 from models.encoder import Encoder
@@ -38,5 +31,6 @@ class RHCNetEMU(nn.Module):
         # Take last timestep
         last_feat = h[:, :, -1]
         out = self.decoder(last_feat)
+
 
         return out
