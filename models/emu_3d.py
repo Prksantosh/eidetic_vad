@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Mar  8 14:09:15 2026
-
-@author: Santosh Prakash
-"""
-
 import torch
 import torch.nn as nn
 
@@ -28,5 +21,6 @@ class EMU3D(nn.Module):
         recall = torch.softmax(r, dim=2) * prev_c
         c = i * g + self.norm(prev_c + recall)
         h = o * torch.tanh(c)
+
 
         return h, c
