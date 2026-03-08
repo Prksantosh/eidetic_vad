@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Mar  8 14:07:52 2026
-
-@author: Santosh Prakash
-"""
-
 import torch
 import torch.nn as nn
 from models.rhc_layer import RHCLayer
@@ -35,4 +28,5 @@ class AERHCLayer(nn.Module):
 
     def forward(self, x):
         x = self.rhc(x)
+
         return self.se(x)
