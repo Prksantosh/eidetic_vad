@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Mar  8 14:12:04 2026
-
-@author: Santosh Prakash
-"""
-
 import torch
 from torch.utils.data import DataLoader
 
@@ -73,3 +66,4 @@ for epoch in range(config.epochs):
 
 
     print(f"Epoch [{epoch+1}/{config.epochs}]  Loss: {total_loss/len(dataloader):.6f}")
+
