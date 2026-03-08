@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Mar  8 14:10:05 2026
-
-@author: Santosh Prakash
-"""
 
 import torch.nn as nn
 from models.ae_rhc_layer import AERHCLayer
@@ -26,5 +20,6 @@ class Decoder(nn.Module):
 
         x = self.up2(x)
         x = self.layer2(x)
+
 
         return self.final(x)
