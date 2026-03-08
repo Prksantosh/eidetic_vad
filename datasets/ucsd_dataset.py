@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Mar  8 14:14:45 2026
-
-@author: Santosh Prakash
-"""
-
 import os
 import glob
 import numpy as np
@@ -120,5 +113,6 @@ class UCSDPed2(Dataset):
         if self.split == "test" and self.return_label:
             label = self.gt_labels[idx]
             return input_frames, target_frame, label
+
 
         return input_frames, target_frame
