@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Mar  8 14:07:03 2026
-
-@author: Santosh Prakash
-"""
-
 import torch
 import torch.nn as nn
 
@@ -46,5 +39,6 @@ class RHCLayer(nn.Module):
 
         out = torch.cat([r, o], dim=1)
         out = self.shuffle(out)
+
 
         return self.norm(out + x)
