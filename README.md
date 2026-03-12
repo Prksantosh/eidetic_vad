@@ -32,36 +32,9 @@ Experiments were conducted on:
 
 
 Dataset structure:
+<img width="5480" height="1805" alt="Untitled Diagram" src="https://github.com/user-attachments/assets/4807dfdf-826d-4eaf-83d0-22742cfe714e" />
 
-Avenue/
- ├── training_frames/
- │    ├── video_01/
- │    │     frame_0001.jpg
- │    │     frame_0002.jpg
- │    │     ...
- │    ├── video_02/
- │
- ├── testing_frames/
 
-ShanghaiTech/
- ├── training_frames/
- │    ├── video_01/
- │    │     frame_0001.jpg
- │    │     frame_0002.jpg
- │    │     ...
- │    ├── video_02/
- │
- ├── testing_frames/
-
- UBnormal/
- ├── training_frames/
- │    ├── video_01/
- │    │     frame_0001.jpg
- │    │     frame_0002.jpg
- │    │     ...
- │    ├── video_02/
- │
- ├── testing_frames/
  
 ## Training
 
