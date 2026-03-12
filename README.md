@@ -6,7 +6,7 @@ The architecture combines:
 
 - Residual Hybrid Convolution Network (RHCNet)
 - Attention Enhanced RHCNet (AE-RHCNet)
-- ConvLSTM based spatiotemporal modeling
+- E3D-LSTM based spatiotemporal modeling
 
 The model predicts the next frame given previous frames and detects anomalies using reconstruction error.
 
