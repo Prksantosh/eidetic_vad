@@ -27,16 +27,42 @@ Attention Enhanced RHCNet blocks.
 Experiments were conducted on:
 
 - CUHK Avenue dataset
+- ShanghaiTech dataset
+- UBnormal dataset
 
 
 Dataset structure:
 
 Avenue/
-    training_frames/
-    testing_frames/
+ ├── training_frames/
+ │    ├── video_01/
+ │    │     frame_0001.jpg
+ │    │     frame_0002.jpg
+ │    │     ...
+ │    ├── video_02/
+ │
+ ├── testing_frames/
 
----
+ShanghaiTech/
+ ├── training_frames/
+ │    ├── video_01/
+ │    │     frame_0001.jpg
+ │    │     frame_0002.jpg
+ │    │     ...
+ │    ├── video_02/
+ │
+ ├── testing_frames/
 
+ UBnormal/
+ ├── training_frames/
+ │    ├── video_01/
+ │    │     frame_0001.jpg
+ │    │     frame_0002.jpg
+ │    │     ...
+ │    ├── video_02/
+ │
+ ├── testing_frames/
+ 
 ## Training
 
 ```bash
