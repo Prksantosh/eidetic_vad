@@ -1,7 +1,8 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
-import torchvision.transforms as transform
+import torchvision.transforms as transforms
+
 
 from configs.config import Config
 from models.autoencoder import RHCNetAutoencoder
@@ -42,6 +43,11 @@ scheduler = torch.optim.lr_scheduler.StepLR(
 # --------------------------------------------------
 # Dataset + Dataloader
 # --------------------------------------------------
+transform = transforms.Compose([
+    transforms.Resize((256,256)),
+    transforms.ToTensor(),
+])
+
 train_dataset = AvenueDataset(
     root_dir="Avenue/training_frames",
     seq_len=4,
@@ -121,5 +127,8 @@ for epoch in range(epochs):
         model.state_dict(),
         f"rhcnet_avenue_epoch_{epoch+1}.pth"
     )
+
+
+
 
 
