@@ -1,7 +1,13 @@
-def timestamp_transform(x):
-    """
-    Input:  B x T x C x H x W
-    Output: B x C x T x H x W
-    """
+###############################################
+# Timestamp Transformation
+###############################################
+class TimestampTransform(nn.Module):
 
-    return x.permute(0, 2, 1, 3, 4).contiguous()
+    def forward(self, x, B, T):
+
+        C, H, W = x.shape[1:]
+
+        x = x.view(B, T, C, H, W)
+
+        return x
+
