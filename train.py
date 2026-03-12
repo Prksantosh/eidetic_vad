@@ -8,6 +8,8 @@ from configs.config import Config
 from models.autoencoder import RHCNetAutoencoder
 from losses.losses import SSIMLoss, TemporalLoss
 from datasets.avenue_dataset import AvenueDataset
+from datasets.ShanghaiTech_dataset import  ShanghaiTech
+from datasets.UBnormal_dataset import UBnormal
 from torch.utils.data import DataLoader
 
 
@@ -127,6 +129,7 @@ for epoch in range(epochs):
         model.state_dict(),
         f"rhcnet_avenue_epoch_{epoch+1}.pth"
     )
+
 
 
 
