@@ -10,6 +10,6 @@ class Config:
     EPOCHS = 100
     LR = 1e-4
 
-
     device = "cuda"
+
 
