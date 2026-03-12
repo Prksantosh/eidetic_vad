@@ -12,14 +12,11 @@ from datasets.ShanghaiTech_dataset import ShanghaiTech
 from datasets.UBnormal_dataset import UBnormal
 from torch.utils.data import DataLoader
 
-
 # --------------------------------------------------
 # Config
 # --------------------------------------------------
 config = Config()
 device = torch.device(config.device if torch.cuda.is_available() else "cpu")
-
-
 
 model = RHCNetAutoencoder(seq_len=4).to(device)
 
@@ -129,6 +126,7 @@ for epoch in range(epochs):
         model.state_dict(),
         f"rhcnet_avenue_epoch_{epoch+1}.pth"
     )
+
 
 
 
