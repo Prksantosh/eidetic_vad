@@ -1,23 +1,18 @@
 
 
 class Config:
-    # Data
-    img_size = 256
-    in_channels = 3
-    sequence_length = 4
+    DATASET_PATH = "datasets/Avenue"
 
-    # Model
-    base_channels = 32
-    memory_channels = 256
-    emu_layers = 2
+    SEQ_LEN = 4
+    IMG_SIZE = 256
 
-    # Training
-    batch_size = 4
-    epochs = 50
-    lr = 1e-4
-    device = "cuda"
+    BATCH_SIZE = 4
+    EPOCHS = 100
+    LR = 1e-4
 
-    # Loss weights
-    lambda_mse = 1.0
+    LAMBDA_MSE = 1.0
+    LAMBDA_SSIM = 0.5
+    LAMBDA_TEMP = 0.2
 
-    lambda_ssim = 0.5
+    DEVICE = "cuda"
+
