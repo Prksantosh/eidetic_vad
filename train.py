@@ -10,7 +10,7 @@ import numpy as np
 
 
 from configs.config import Config
-from models.rhcnet_emu import RHCNetEMU
+from models.autoencoder import RHCNetEMU
 from losses.losses import PredictionLoss
 from datasets.ucsd_dataset import UCSDPed2
 
@@ -123,4 +123,5 @@ for epoch in range(epochs):
         model.state_dict(),
         f"rhcnet_avenue_epoch_{epoch+1}.pth"
     )
+
 
