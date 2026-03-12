@@ -27,8 +27,7 @@ Attention Enhanced RHCNet blocks.
 Experiments were conducted on:
 
 - CUHK Avenue dataset
-- ShanghiTech dataset
-- Ubnormal dataset
+
 
 Dataset structure:
 
