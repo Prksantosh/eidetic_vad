@@ -1,16 +1,36 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Mar  8 14:11:24 2026
+import torch.nn.functional as F
 
-@author: Santosh Prakash
-"""
+class SSIMLoss(nn.Module):
 
-import torch.nn as nn
-
-class PredictionLoss(nn.Module):
     def __init__(self):
         super().__init__()
-        self.mse = nn.MSELoss()
 
-    def forward(self, pred, gt):
-        return self.mse(pred, gt)
+    def forward(self, x, y):
+
+        C1 = 0.01**2
+        C2 = 0.03**2
+
+        mu_x = F.avg_pool2d(x,3,1,1)
+        mu_y = F.avg_pool2d(y,3,1,1)
+
+        sigma_x = F.avg_pool2d(x*x,3,1,1) - mu_x**2
+        sigma_y = F.avg_pool2d(y*y,3,1,1) - mu_y**2
+        sigma_xy = F.avg_pool2d(x*y,3,1,1) - mu_x*mu_y
+
+        ssim = ((2*mu_x*mu_y + C1)*(2*sigma_xy + C2)) / \
+               ((mu_x**2 + mu_y**2 + C1)*(sigma_x + sigma_y + C2))
+
+        return torch.clamp((1 - ssim)/2,0,1).mean()
+
+class TemporalLoss(nn.Module):
+
+    def __init__(self):
+        super().__init__()
+        self.l1 = nn.L1Loss()
+
+    def forward(self, pred, prev_frame, gt):
+
+        pred_motion = pred - prev_frame
+        gt_motion = gt - prev_frame
+
+        return self.l1(pred_motion, gt_motion)
