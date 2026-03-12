@@ -128,8 +128,9 @@ for epoch in range(epochs):
     # Save checkpoint
     torch.save(
         model.state_dict(),
-        f"rhcnet_avenue_epoch_{epoch+1}.pth"
+        f"rhcnet_avenue_epoch_{epoch}.pth"
     )
+
 
 
 
