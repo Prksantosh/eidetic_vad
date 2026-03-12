@@ -5,14 +5,12 @@ from PIL import Image
 from torch.utils.data import Dataset
 
 
-
 class AvenueDataset(Dataset):
 
-    def __init__(self, root_dir, seq_len=4):
+    def __init__(self, root_dir, seq_len=4, transform=None):
 
         self.seq_len = seq_len
-        #self.transform = transform
-
+        self.transform = transform
         self.samples = []
 
         videos = sorted(os.listdir(root_dir))
@@ -43,8 +41,8 @@ class AvenueDataset(Dataset):
 
             img = Image.open(p).convert("RGB")
 
-            #if self.transform:
-                #img = self.transform(img)
+            if self.transform:
+                img = self.transform(img)
 
             frames.append(img)
 
@@ -52,9 +50,7 @@ class AvenueDataset(Dataset):
 
         target = Image.open(target_path).convert("RGB")
 
-        #if self.transform:
-            #target = self.transform(target)
+        if self.transform:
+            target = self.transform(target)
 
         return frames, target
-    
-
