@@ -5,32 +5,61 @@ from models.decoder import Decoder
 from models.timestamp import timestamp_transform
 from models.emu_3d import EMU3D
 
-class RHCNetEMU(nn.Module):
-    def __init__(self, config):
+###############################################
+# Full Autoencoder Model
+###############################################
+class RHCNetAutoencoder(nn.Module):
+
+    def __init__(self, seq_len=4):
+
         super().__init__()
 
-        self.encoder = Encoder(config.in_channels, config.base_channels)
-        self.emu = EMU3D(config.base_channels*4)
-        self.decoder = Decoder(config.base_channels, config.in_channels)
+        self.seq_len = seq_len
+
+        self.initial = nn.Conv2d(3, 64, 3, padding=1)
+
+        self.enc1 = EncoderStage(64, 64)
+        self.enc2 = EncoderStage(64, 128)
+        self.enc3 = EncoderStage(128, 256)
+        self.enc4 = EncoderStage(256, 512)
+
+        self.timestamp = TimestampTransform()
+
+        self.lstm1 = ConvLSTM(512, 512)
+        self.lstm2 = ConvLSTM(512, 512)
+
+        self.dec1 = DecoderStage(512, 256)
+        self.dec2 = DecoderStage(256, 128)
+        self.dec3 = DecoderStage(128, 64)
+        self.dec4 = DecoderStage(64, 32)
+
+        self.final = nn.Conv2d(32, 3, 3, padding=1)
 
     def forward(self, x):
+
         B, T, C, H, W = x.shape
 
-        # Encode each frame
-        enc_feats = []
-        for t in range(T):
-            enc = self.encoder(x[:, t])
-            enc_feats.append(enc)
+        x = x.view(B * T, C, H, W)
 
-        enc_feats = torch.stack(enc_feats, dim=1)
-        enc_feats = timestamp_transform(enc_feats)
+        x = self.initial(x)
 
-        prev_c = torch.zeros_like(enc_feats)
-        h, c = self.emu(enc_feats, prev_c)
+        x = self.enc1(x)
+        x = self.enc2(x)
+        x = self.enc3(x)
+        x = self.enc4(x)
 
-        # Take last timestep
-        last_feat = h[:, :, -1]
-        out = self.decoder(last_feat)
+        x = self.timestamp(x, B, T)
 
+        x, _ = self.lstm1(x)
+        x, h = self.lstm2(x)
 
-        return out
+        x = h
+
+        x = self.dec1(x)
+        x = self.dec2(x)
+        x = self.dec3(x)
+        x = self.dec4(x)
+
+        x = self.final(x)
+
+        return x
