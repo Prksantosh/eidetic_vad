@@ -45,6 +45,10 @@ scheduler = torch.optim.lr_scheduler.StepLR(
 transform = transforms.Compose([
     transforms.Resize((256,256)),
     transforms.ToTensor(),
+    transforms.Normalize(
+        mean=[0.5,0.5,0.5],
+        std=[0.5,0.5,0.5]
+    )
 ])
 
 train_dataset = AvenueDataset(
@@ -126,6 +130,7 @@ for epoch in range(epochs):
         model.state_dict(),
         f"rhcnet_avenue_epoch_{epoch+1}.pth"
     )
+
 
 
 
