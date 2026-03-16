@@ -6,7 +6,7 @@ import torchvision.transforms as transforms
 
 from configs.config import Config
 from models.autoencoder import RHCNetAutoencoder
-from models.emu_autoencoder import RHCNetAutoencoder
+#from models.emu_autoencoder import RHCNetAutoencoder
 from losses.losses import SSIMLoss, TemporalLoss
 from datasets.avenue_dataset import AvenueDataset
 from datasets.ShanghaiTech_dataset import ShanghaiTech
