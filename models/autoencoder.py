@@ -26,7 +26,7 @@ class RHCNetAutoencoder(nn.Module):
         self.timestamp = TimestampTransform()
 
         self.lstm1 = ConvLSTM(512, 512)
-        self.lstm2 = ConvLSTM(512, 512)
+        self.lstm2 = ConvLSTM(512, 512)      
 
         self.dec1 = DecoderStage(512, 256)
         self.dec2 = DecoderStage(256, 128)
