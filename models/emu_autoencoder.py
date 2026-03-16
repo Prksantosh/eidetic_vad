@@ -28,7 +28,7 @@ class RHCNetAutoencoder(nn.Module):
         self.timestamp = TimestampTransform()
 
         # Temporal modeling
-        self.e3d = ImprovedE3DLSTM(512,512)
+        self.e3d = E3DLSTM(512, 512)
         
         # Decoder
         self.dec1 = DecoderStage(512, 256)
