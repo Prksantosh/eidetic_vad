@@ -2,7 +2,7 @@ import torch.nn as nn
 from models.encoder import EncoderStage
 from models.decoder import DecoderStage
 from models.emu_timestamp import TimestampTransform
-from models.improved3demu import ImprovedE3DLSTM
+from models.emu_3d import E3DLSTM
 
 ###############################################
 # Full Autoencoder Model
