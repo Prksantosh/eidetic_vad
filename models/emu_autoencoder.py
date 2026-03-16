@@ -19,7 +19,7 @@ class RHCNetAutoencoder(nn.Module):
         self.initial = nn.Conv2d(3, 64, 3, padding=1)
 
         # Encoder
-        self.enc1 = EncoderStage(64, 64)
+        self.enc1 = EncoderStage(32, 64)
         self.enc2 = EncoderStage(64, 128)
         self.enc3 = EncoderStage(128, 256)
         self.enc4 = EncoderStage(256, 512)
